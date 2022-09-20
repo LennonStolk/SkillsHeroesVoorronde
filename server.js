@@ -16,10 +16,22 @@ app.get("/", function(req, res) {
       console.error(err.message);
     }
 
-    // Render page with games from database
-    db.all(`SELECT * FROM games`, [], (err, rows) => {
-      res.render("Pages/GameList", { rows });
-    });
+    console.log(req.query);
+    if (req.query.search !== "" && req.query.search !== undefined) {
+      // Render page with games matching search term from database
+      db.all(`SELECT * FROM games WHERE instr(name, ?) > 0`, [req.query.search], (err, rows) => {
+        res.render("Pages/GameList", { rows });
+      });
+    }
+    else {
+      // Render page with games from database
+      db.all(`SELECT * FROM games`, [], (err, rows) => {
+        res.render("Pages/GameList", { rows });
+      });
+    }
+
+
+    
 
   });
 });

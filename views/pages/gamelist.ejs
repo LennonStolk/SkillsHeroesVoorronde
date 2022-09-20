@@ -11,7 +11,19 @@
 
 <main>
     <div class="jumbotron">
-        <h1>Aanbod spellen</h1>
+
+        <form class="input-group" action="/" method="get">
+            <div class="form-outline">
+                <input type="text" id="form1" name="search" class="form-control" />
+            </div>
+            <button type="submit" class="btn btn-primary">
+                Zoeken
+            </button>
+        </form>
+
+        <h1 style="margin-top: 50px;">Aanbod spellen</h1>
+
+
 
         <ul>
             <% rows.forEach(function(row) { %>
