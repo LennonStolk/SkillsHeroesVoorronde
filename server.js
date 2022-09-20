@@ -16,7 +16,6 @@ app.get("/", function(req, res) {
       console.error(err.message);
     }
 
-    console.log(req.query);
     if (req.query.search !== "" && req.query.search !== undefined) {
       // Render page with games matching search term from database
       db.all(`SELECT * FROM games WHERE instr(name, ?) > 0`, [req.query.search], (err, rows) => {
@@ -29,10 +28,6 @@ app.get("/", function(req, res) {
         res.render("Pages/GameList", { rows });
       });
     }
-
-
-    
-
   });
 });
 
