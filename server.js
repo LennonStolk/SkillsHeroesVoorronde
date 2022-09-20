@@ -6,15 +6,22 @@ const sqlite3 = require("sqlite3");
 // Set the view engine to ejs
 app.set("view engine", "ejs");
 
+app.use(express.static('views'));
+
 // Index page
 app.get("/", function(req, res) {
   let db = new sqlite3.Database('./spellenwinkel.db', sqlite3.OPEN_READWRITE, (err) => {
+
     if (err) {
       console.error(err.message);
     }
+
+    // Render page with games from database
     db.all(`SELECT * FROM games`, [], (err, rows) => {
-      res.render("Pages/GameList");
+      console.log(rows);
+      res.render("Pages/GameList", { rows });
     });
+
   });
 });
 

@@ -12,7 +12,23 @@
 <main>
     <div class="jumbotron">
         <h1>Aanbod spellen</h1>
-        <p>Hier komen spellen </p>
+
+        <ul>
+            <% rows.forEach(function(row) { %>
+              <li class="jumbotron d-flex">
+                <img src="/pages/images/<%= row.img_src %>" width="180">
+                <ul>
+                    <li><strong><%= row.name %></strong></li>
+                    <li>Prijs: €<%= row.price %></li>
+                    <li>Speltype: <%= row.type %></li>
+                    <li>Aantal spelers: <%= row.player_amount %></li>
+                    <li>Leeftijd: <%= row.ages %></li>
+                    <li>Spelduur: <%= row.player_duration_minutes %> minuten</li>
+                </ul>
+                
+              </li>
+            <% }); %>
+          </ul>
     </div>
 </main>
 
