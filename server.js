@@ -18,8 +18,23 @@ app.get("/", function(req, res) {
 
     // Render page with games from database
     db.all(`SELECT * FROM games`, [], (err, rows) => {
-      console.log(rows);
       res.render("Pages/GameList", { rows });
+    });
+
+  });
+});
+
+// Game details page
+app.get("/game/:gameId", function(req, res) {
+  let db = new sqlite3.Database('./spellenwinkel.db', sqlite3.OPEN_READWRITE, (err) => {
+
+    if (err) {
+      console.error(err.message);
+    }
+
+    // Render page with details of specific game
+    db.all(`SELECT * FROM games WHERE id = ?`, [req.params.gameId], (err, rows) => {
+      res.render("Pages/Game", { rows });
     });
 
   });

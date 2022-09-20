@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head'); %>
+</head>
+<body class="container" background="/pages/images/background.webp" style="background-size: cover;">
+
+<header>
+    <%- include('../partials/header'); %>
+</header>
+
+<main>
+    <div class="jumbotron">
+        <a href="/">
+            <h3>Terug</h3>
+        </a>
+
+            <div class="jumbotron">
+                <ul>
+                    <li><strong><%= rows[0].name %></strong></li>
+                    <li>Prijs: €<%= rows[0].price %></li>
+                    <li>Speltype: <%= rows[0].type %></li>
+                    <li>Aantal spelers: <%= rows[0].player_amount %></li>
+                    <li>Leeftijd: <%= rows[0].ages %></li>
+                    <li>Spelduur: <%= rows[0].player_duration_minutes %> minuten</li>
+                </ul>
+                <img src="/pages/images/<%= rows[0].img_src %>" width="100%">
+            </div>
+    </div>
+</main>
+
+<footer>
+    <%- include('../partials/footer'); %>
+</footer>
+
+</body>
+</html>

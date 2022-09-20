@@ -3,7 +3,7 @@
 <head>
     <%- include('../partials/head'); %>
 </head>
-<body class="container">
+<body class="container" background="/pages/images/background.webp" style="background-size: cover;">
 
 <header>
     <%- include('../partials/header'); %>
@@ -17,13 +17,12 @@
             <% rows.forEach(function(row) { %>
               <li class="jumbotron d-flex">
                 <img src="/pages/images/<%= row.img_src %>" width="180">
-                <ul>
-                    <li><strong><%= row.name %></strong></li>
-                    <li>Prijs: €<%= row.price %></li>
-                    <li>Speltype: <%= row.type %></li>
-                    <li>Aantal spelers: <%= row.player_amount %></li>
-                    <li>Leeftijd: <%= row.ages %></li>
-                    <li>Spelduur: <%= row.player_duration_minutes %> minuten</li>
+                <ul style="list-style: none;">
+                    <li><strong><h4><%= row.name %></h4></strong></li>
+                    <li><h5>Prijs: €<%= row.price %></h5></li>
+                    <li>
+                        <a href="/game/<%= row.id %>">Bekijken</a>
+                    </li>
                 </ul>
                 
               </li>
